@@ -1,11 +1,28 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FormsModule } from '@angular/forms';
+import { environment } from './environments/environments';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideFirebaseApp(() => initializeApp({ projectId: "travelmaker-5f602", appId: "1:997722182721:web:4fa9c0cdc63641731ea2c0", storageBucket: "travelmaker-5f602.firebasestorage.app", apiKey: "AIzaSyDYonji-Vq4ug-YS_0mx1wPnGArkhqHKNM", authDomain: "travelmaker-5f602.firebaseapp.com", messagingSenderId: "997722182721" })), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()), 
+    provideFirestore(() => getFirestore()),
+    importProvidersFrom(FormsModule),
+    provideServiceWorker('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000'
+    }), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          })
+  ],
 };
