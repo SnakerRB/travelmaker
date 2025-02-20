@@ -1,0 +1,186 @@
+.about-us {
+  font-family: "Arial", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  overflow: hidden; /* Prevent potential overflow issues */
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center/cover;
+  color: #fff;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mission & Values Sections */
+.mission,
+.values {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.mission .text-content,
+.values .text-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.mission .image-content,
+.values .image-content {
+  flex: 1;
+  text-align: center;
+}
+
+.mission h2,
+.values h2 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.mission p,
+.values p {
+  margin-bottom: 1rem;
+}
+
+.values ul {
+  list-style: none;
+  padding: 0;
+}
+
+.values li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.values li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #00adb5;
+}
+
+.mission img,
+.values img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* Team Section */
+.team {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.team h2 {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.team-members {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  margin: 1rem;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 1rem;
+  width: 30%;
+}
+
+.team-member img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.team-member .role {
+  color: #6c757d;
+}
+/* Call to Action */
+.call-to-action {
+  text-align: center;
+  padding: 2rem;
+  background-color: #00adb5;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.call-to-action p {
+  margin-bottom: 1rem;
+}
+
+.call-to-action button {
+  background-color: #fff;
+  color: #00adb5;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.call-to-action button:hover {
+  background-color: #eeeeee;
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mission,
+  .values {
+    flex-direction: column;
+  }
+
+  .mission .text-content,
+  .values .text-content,
+  .mission .image-content,
+  .values .image-content {
+    flex: 1;
+    padding: 1rem;
+  }
+
+  .team-member {
+    width: 90%;
+  }
+}

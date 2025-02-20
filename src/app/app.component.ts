@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { RouterLink } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { RouterOutlet, RouterLink, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +8,22 @@ import { RouterLink } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'myapp';
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    });
+  }
+  currentRoute = '';
+  isActive(route: string): boolean {
+    return this.currentRoute === route;
+  }
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
+
 }

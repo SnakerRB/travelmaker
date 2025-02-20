@@ -8,6 +8,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { environment } from './environments/environments';
 import { provideServiceWorker } from '@angular/service-worker';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +24,6 @@ export const appConfig: ApplicationConfig = {
     }), provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
-          })
+          }), provideAnimationsAsync()
   ],
 };

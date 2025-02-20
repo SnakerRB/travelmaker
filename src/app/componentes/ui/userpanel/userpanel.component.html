@@ -1,0 +1,31 @@
+<section class="travel-panel" >
+  <div class="panel-header">
+    <h1>Your Trips</h1>
+  </div>
+  <div class="panel-actions">
+    <button mat-raised-button color="primary" (click)="goToNewTrip()" class="panel-actions">Add new Trip</button>
+  </div>
+
+  <div class="trips-container" *ngIf="trips.length > 0; else noTrips" >
+    <mat-card class="trip-card" *ngFor="let trip of trips">
+      <mat-card-header>
+        <button mat-icon-button (click)="deleteTrip(trip)" aria-label="Delete trip"><mat-icon>delete</mat-icon></button>
+        <mat-card-title>{{ trip.name }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ trip.description }}</p>
+        <p class="trip-dates"> {{ trip.startDate | date: 'dd/MM/yyyy' }} - {{ trip.endDate | date: 'dd/MM/yyyy' }}</p>
+        <p class="trip-destination">Destination: {{ trip.destination }}</p>
+      </mat-card-content>
+
+        <button mat-button class="view-trip" (click)="goToTrip(trip)">View Details</button>
+      </mat-card>
+  </div>
+
+  <ng-template #noTrips>
+    <div class="no-trips-message">
+      <p>You don't have any trips planned yet.</p>
+    </div>
+  </ng-template>
+</section>

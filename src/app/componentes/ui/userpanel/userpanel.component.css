@@ -1,0 +1,127 @@
+.travel-panel {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    width: 95%;
+    padding-top: 70px;
+    flex-direction: column;
+}
+
+.panel-header {
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    color: #64ffda;
+}
+
+.panel-header h1 {
+    font-size: 2.5rem;
+    color: #64ffda;
+    margin-bottom: 10px;
+}
+
+.panel-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.trips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.trip-card {
+    background-color: #2c2c2c;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "content"
+        "button";
+    padding: 20px;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+.mat-mdc-card-header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trip-card-content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-mdc-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.trip-dates {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-top: 10px;
+}
+
+.trip-destination {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.mat-mdc-card-actions {
+    grid-area: button;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view-trip {
+    background-color: #64ffda;
+    color: #1e1e1e;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.view-trip:hover {
+    background-color: #4affc4;
+    box-shadow: 0 4px 8px rgba(0, 255, 218, 0.5);
+    transform: scale(1.05);
+}
+
+.mat-icon-button {
+  background-color: #444;
+  border-radius: 50%;
+}
+
+.mat-mdc-card-header-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.no-trips-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .trip-card {
+    width: 100%;
+  }
+}
