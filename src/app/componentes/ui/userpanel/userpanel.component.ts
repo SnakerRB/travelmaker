@@ -50,18 +50,7 @@ export class UserpanelComponent implements OnInit {
   }
 
   goToNewTrip() {
-    const newTrip: Trip = {
-      name: '',
-      description: '',
-      startDate: new Date(),
-      endDate: new Date(),
-      destination: '', 
-      userId: this.userId,
-    };
-    this.tripService.addTrip(newTrip).subscribe(()=>{
-      this.getTrips();
-    });
-
+    this.router.navigate(['/newtrip']);
   }
 
   deleteTrip(trip: Trip) {

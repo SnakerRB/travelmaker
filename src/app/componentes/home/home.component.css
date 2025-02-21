@@ -56,6 +56,7 @@
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: #00adb5;
 }
 
 .hero-content p {
@@ -78,52 +79,4 @@
 .hero-content button:hover {
     background-color: #0096c7;
     transform: translateY(-3px);
-}
-
-/* Featured Destinations */
-.featured-destinations {
-    padding: 4rem 2rem;
-    text-align: center;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.destinations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.destination {
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
-
-.destination:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-}
-
-.destination img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.destination:hover img {
-    transform: scale(1.1);
-}
-
-.destination h3 {
-    padding: 1rem;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    position: relative;
-    z-index: 10;
-    color: #333;
 }

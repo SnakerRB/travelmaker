@@ -40,15 +40,16 @@ export class TripComponent implements OnInit {
     }
    }
 
-  ngOnInit(): void {
-
+   ngOnInit(): void {
     if (this.trip) {
       console.log('Trip ID:', this.trip.id);
       console.log('Trip Data:', this.trip);
+  
       if (this.trip.id) {
         this.tripService.getNotesByTripId(this.trip.id, this.firestore).subscribe(
           (notes) => {
             this.notes = notes;
+            console.log('Notas obtenidas:', this.notes); // 🔍 Verifica si las notas llegan correctamente
           },
           (error) => {
             console.error('Error fetching notes:', error);
@@ -56,19 +57,21 @@ export class TripComponent implements OnInit {
         );
       }
     }
-
   }
+
   async addNote(): Promise<void> {
     if (this.trip && this.trip.id) {
       try {
         const newNote: Note = {
           id: (this.notes.length > 0 ? Math.max(...this.notes.map(note => parseInt(note.id))) + 1 : 1).toString(),
-          title: this.noteForm.value.newNoteTitle || '',
-          description: this.noteForm.value.newNoteDescription || '',
-          content: this.noteForm.value.newNoteContent || ''
+          title: this.noteForm.value.newNoteTitle?.trim() || 'Sin título',
+          description: this.noteForm.value.newNoteDescription?.trim() || 'Sin descripción',
+          content: this.noteForm.value.newNoteContent?.trim() || 'Sin contenido'
         };
+
         await this.tripService.addNoteToTrip(this.trip.id, newNote, this.firestore);
         this.notes.push(newNote);
+        console.log('Nueva nota agregada:', newNote); // 🔍 Verifica si la nota se agrega correctamente
         this.noteForm.reset();
       } catch (error) {
         console.error("Error adding note:", error);
@@ -77,7 +80,6 @@ export class TripComponent implements OnInit {
       console.error("Trip or Trip ID is undefined");
     }
   }
-
 
   goBack(): void {
     this.router.navigate(['/userpanel']);

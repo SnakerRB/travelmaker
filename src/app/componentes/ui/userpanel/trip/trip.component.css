@@ -1,73 +1,208 @@
+/* General Container */
 .trip-details-container {
-  font-family: 'Roboto', sans-serif;
-  background-color: #1e1e1e;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
   min-height: 100vh;
-  color: #f0f0f0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 90px;
   width: 100%;
+  overflow: hidden;
+  padding-top: 90px;
 }
 
+/* Header Section */
 .header {
   display: flex;
   width: 95%;
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #64ffda;
+  border-bottom: 2px solid #00adb5;
 }
 
 .header .mat-mdc-icon-button {
   margin-right: 20px;
-  color: #64ffda;
+  color: #00adb5;
 }
 
 .trip-title {
-  color: #64ffda;
+  color: #00adb5;
   font-size: 2rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-}
-.notes-container {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Card Styles */
 .trip-info-card,
 .new-note-card,
 .notes-list-card {
-  background-color: #2c2c2c;
+  background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   padding: 20px;
   width: 95%;
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.content {
-  width: 95%;
-  display: flex;
-  flex-direction: column;
+.trip-info-card:hover,
+.new-note-card:hover,
+.notes-list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* Form Styles */
 .full-width {
   width: 100%;
 }
-.note-card-content {
-  flex-grow: 1;
+
+mat-form-field {
+  width: 100%;
 }
-.note-title {
-  font-size: 1.2rem;
+
+mat-card-title {
   font-weight: 600;
 }
-.note-content {
-  font-size: 1rem;
+
+/* Note List */
+.notes-list-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 95%;
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
 }
-.note-actions {
+
+.notes-list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.note-item {
+  background: #f4f4f4;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border-left: 4px solid #00adb5; /* Resalta el margen izquierdo */
 }
-.add-note-button {
-  margin-top: 30px;
+
+.note-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.note-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.note-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.note-description {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.note-body {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background: #e6e6e6;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notes-list-card {
+    width: 100%;
+  }
+
+  .note-item {
+    padding: 10px;
+  }
+
+  .note-title {
+    font-size: 1.3rem;
+  }
+
+  .note-description {
+    font-size: 1.1rem;
+  }
+
+  .note-body {
+    font-size: 1rem;
+  }
+}
+
+/* Call to Action */
+.call-to-action {
+  text-align: center;
+  padding: 2rem;
+  background-color: #00adb5;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.call-to-action p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.call-to-action button {
+  background-color: #fff;
+  color: #00adb5;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.call-to-action button:hover {
+  background-color: #eeeeee;
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .trip-info-card,
+  .new-note-card,
+  .notes-list-card {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
 }

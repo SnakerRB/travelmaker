@@ -1,9 +1,9 @@
 <section class="travel-panel" >
   <div class="panel-header">
-    <h1>Your Trips</h1>
+    <h1>Tus Notas</h1>
   </div>
   <div class="panel-actions">
-    <button mat-raised-button color="primary" (click)="goToNewTrip()" class="panel-actions">Add new Trip</button>
+    <button mat-raised-button color="primary" (click)="goToNewTrip()" class="panel-actions">+ Nueva nota </button>
   </div>
 
   <div class="trips-container" *ngIf="trips.length > 0; else noTrips" >
@@ -14,12 +14,12 @@
       </mat-card-header>
 
       <mat-card-content>
-        <p>{{ trip.description }}</p>
+        <!-- <p>{{ trip.description }}</p> -->
         <p class="trip-dates"> {{ trip.startDate | date: 'dd/MM/yyyy' }} - {{ trip.endDate | date: 'dd/MM/yyyy' }}</p>
-        <p class="trip-destination">Destination: {{ trip.destination }}</p>
+        <p class="trip-destination">Tema: {{ trip.destination }}</p>
       </mat-card-content>
-
-        <button mat-button class="view-trip" (click)="goToTrip(trip)">View Details</button>
+        <br>
+        <button mat-button class="view-trip" (click)="goToTrip(trip)">Ver Detalles</button>
       </mat-card>
   </div>
 

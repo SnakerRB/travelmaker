@@ -1,57 +1,66 @@
 <div class="trip-details-container">
+  <!-- Header con botón de regreso -->
   <div class="header">
-    <button mat-icon-button (click)="goBack()" aria-label="Go Back">
+    <button mat-icon-button (click)="goBack()" aria-label="Volver">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <h2 class="trip-title">Trip Details</h2>
+    <h2 class="trip-title">Detalles de Nota</h2>
   </div>
+
   <div class="content">
-    <mat-card class="trip-info-card">
-        <mat-card-header>
-            <mat-card-title>Trip Information</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p *ngIf="trip">Name: {{ trip.name }}</p>
-          <p *ngIf="trip">Description: {{ trip.description }}</p>
-          <p *ngIf="trip">Start Date: {{ trip.startDate | date: 'dd/MM/yyyy' }}</p>
-          <p *ngIf="trip">End Date: {{ trip.endDate | date: 'dd/MM/yyyy' }}</p>
-          <p *ngIf="trip">Destination: {{ trip.destination }}</p>
-        </mat-card-content>
+    <!-- Información de la nota -->
+    <mat-card class="trip-info-card" *ngIf="trip">
+      <mat-card-header>
+        <mat-card-title>Información de la Nota</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Nombre:</strong> {{ trip.name }}</p>
+        <p><strong>Fecha de Inicio:</strong> {{ trip.startDate | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Fecha de Fin:</strong> {{ trip.endDate | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Tema:</strong> {{ trip.destination }}</p>
+      </mat-card-content>
     </mat-card>
 
+    <!-- Formulario para agregar una nueva nota -->
     <mat-card class="new-note-card">
-        <mat-card-header>
-            <mat-card-title>Add a Note</mat-card-title>
-        </mat-card-header>
+      <mat-card-header>
+        <mat-card-title>Añadir Nueva Nota</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
         <form [formGroup]="noteForm" (ngSubmit)="addNote()">
-          <mat-card-content>
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="Title" formControlName="newNoteTitle" type="text">
-              </mat-form-field>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Description" formControlName="newNoteDescription" type="text">
-              </mat-form-field>
-              <mat-form-field class="full-width">
-                  <textarea matInput placeholder="Enter your note here" formControlName="newNoteContent"></textarea>
-              </mat-form-field>
-              <button mat-raised-button color="primary" type="submit" [disabled]="noteForm.invalid">Add Note</button>
-          </mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Título" formControlName="newNoteTitle" type="text" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tema" formControlName="newNoteDescription" type="text" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Escribe tus notas aquí..." formControlName="newNoteContent" required></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="noteForm.invalid">
+            Añadir Nota
+          </button>
         </form>
+      </mat-card-content>
     </mat-card>
 
+    <!-- Lista de notas guardadas -->
     <mat-card class="notes-list-card" *ngIf="notes && notes.length > 0">
-        <mat-card-header>
-            <mat-card-title>Notes</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-list>
-                <mat-list-item *ngFor="let note of notes">
-                    <h3 mat-line>{{ note.title }}</h3>
-                    <p mat-line>{{ note.description }}</p>
-                    <p mat-line>{{ note.content}}</p>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>Notas Guardadas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list *ngFor="let note of notes" class="note-item">
+            <div class="note-content">
+              <h3 class="note-title">{{ note.title ? note.title : 'Sin título' }}</h3>
+              <p class="note-description"><strong>Tema:</strong> {{ note.description ? note.description : 'Sin descripción' }}</p>
+              <p class="note-body"><strong>Contenido:</strong> {{ note.content ? note.content : 'Sin contenido' }}</p>
+            </div>
+          </mat-list>
+        </mat-list>
+      </mat-card-content>
     </mat-card>
+
   </div>
 </div>

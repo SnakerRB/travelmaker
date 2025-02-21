@@ -10,6 +10,7 @@ import { Note } from '../inerfaces/note';
 
 export class TripService {
   firestore: Firestore = inject(Firestore);
+  private tripCollection = collection(this.firestore, 'trips');
 
   constructor() {
   }
@@ -30,9 +31,8 @@ export class TripService {
     }));
   }
 
-  addTrip(trip: Trip): Observable<any> {
-    const tripCollection = collection(this.firestore, 'trips');
-    return from(addDoc(tripCollection, trip));
+  addTrip(trip: any): Observable<any> {
+    return from(addDoc(this.tripCollection, trip));
   }
 
   deleteTrip(tripId: string): Observable<void> {
